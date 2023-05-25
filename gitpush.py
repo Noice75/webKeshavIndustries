@@ -1,10 +1,26 @@
 import json
 import os
+commitMSG = input("Enter commit Message = ")
 with open("./version.json", "r") as jsonfile:
     versionData = json.load(jsonfile)
     currentVersion = versionData["version"]
-    nextVersion = currentVersion+0.1
-    versionData["version"] += 0.1
+major, minor, patch = currentVersion.split(".")
+major = int(major)
+minor = int(minor)
+patch = int(patch)
+if(minor == 9):
+    major += 1
+    patch = 0
+    minor = 0
+elif(patch == 9):
+    patch = 0
+    minor += 1
+else:
+    patch += 1
+nextVersion = f"{major}.{minor}.{patch}"
+print(nextVersion)
+versionData["version"] = nextVersion
+
 with open("./version.json", "w") as jsonfile:
     json.dump(versionData, jsonfile, indent=4)
 
@@ -17,11 +33,11 @@ html = f'''<!DOCTYPE html>
     <title>Document</title>
 </head>
 <body>
-    <h5>version: {nextVersion}</h5>
+    <h5>version: {nextVersion}V</h5>
 </body>
 </html>'''
 with open("version.html", "w") as htmlfile:
     htmlfile.write(html)
 os.system('git add .')
-os.system('git commit -m ":)"')
+os.system(f'git commit -m "{commitMSG}"')
 os.system('git push')

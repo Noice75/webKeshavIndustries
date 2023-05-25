@@ -1,0 +1,163 @@
+<html>
+  <script type="module" src="../js/authcheck.js"></script>
+  <script type="module" src="./paymentrecord.js"></script>
+  <script type="module" src="../js/filter.js"></script>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/loader.css" />
+    <link rel="stylesheet" href="../css/records.css" />
+    <link rel="stylesheet" href="../css/sideNav.css" />
+  </head>
+  <body>
+    <div class="backGroundImage"></div>
+    <div class="navBackground"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+      <a href="../main.html"><img class="homeImage" src="../images/home.png" width="20" height="20" /></a>
+      <a class="navbar-brand" href="../main.html">Keshav Industries</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        onclick="openNav()"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Filters
+            </a>
+            <div id="dropdownMenu" class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" onclick="filterDropDownSearch()">Search</a>
+              <a class="dropdown-item" onclick="filterByDateDropDown()">Filter By Date</a>
+              <a class="dropdown-item" onclick="filterByDateRangeDropDown()">Filter By Date Range</a>
+              <a class="dropdown-item" onclick="filterByYearDropDown()">Filter By Year</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" id="dropdown-filter-clear" onclick="clearExistingFilters()">Clear Filter</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="sidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <form class="form-inline my-2 my-lg-0" id="Search", onsubmit="return false" style="display: none;">
+      <input
+        class="form-control mr-sm-2"
+        ,
+        type="text"
+        id="searchBox"
+        placeholder="Search"
+        size="5"
+      />
+      <button class="btn btn-outline-success my-2 my-sm-0" id="submit">
+        Search
+      </button>
+    </form>
+    <div class="filter-date-div" id="filter-date-div" style="display: none;">
+      <label>Filter by date</label>
+      <input
+      type="date"
+      name="date"
+      id="filter-date"
+    />
+    </div>
+    <div class="filter-dateRange-div" id="filter-dateRange-div" style="display: none;">
+      <label>Starting Date - </label>
+      <input
+      type="date"
+      name="date"
+      id="filter-startDate"
+    />
+    <label>Ending Date - </label>
+    <input
+      type="date"
+      name="date"
+      id="filter-endDate"
+    />
+    <button id="searchDateRange">Search</button>
+    </div>
+    <div class="filter-year" id="filter-year" style="display: none;">
+      <label for="exampleFormControlInput1">Year</label>
+      <input id="yearDateSelector" type="number" min="2000" max="2099" step="1" placeholder="0000" />
+    </div>
+
+    <div id="decoyTable" class="card container mt-3">
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">Name OF RECIVER</th>
+            <th scope="col">PURPOSE</th>
+            <th scope="col">AMOUNT</th>
+            <th scope="col">MODE OF PAYMENT</th>
+            <th scope="col">BY WHOM</th>
+          </tr>
+        </thead>
+        <table id="table-loader" class="table-loader"></table>
+      </table>
+    </div>
+
+    <div id="realTable" class="card container mt-3">
+      <table id="table" class="table table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">Name OF RECIVER</th>
+            <th scope="col">PURPOSE</th>
+            <th scope="col">AMOUNT</th>
+            <th scope="col">MODE OF PAYMENT</th>
+            <th scope="col">BY WHOM</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <button
+      class="btn btn-outline-success my-2 my-sm-0"
+      id="previous"
+      type="button"
+    >
+      Previous
+    </button>
+    <button
+      class="btn btn-outline-success my-2 my-sm-0"
+      id="next"
+      type="button"
+    >
+      Next
+    </button>
+    <div id="loader" class="loader" , style="display: none"></div>
+    <script type="text/javascript" src="../js/filterdropdown.js"></script>
+    <script type="text/javascript" src="../js/sideNav.js"></script>
+  </body>
+</html>

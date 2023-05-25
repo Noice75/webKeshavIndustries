@@ -1,0 +1,75 @@
+body {
+  background-color: white;
+}
+
+.card-body {
+  background-color: transparent;
+}
+
+.card.m-1 {
+  background-color: transparent;
+}
+
+.card-title {
+  color: black;
+}
+
+.navBackground {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  bottom: 92%;
+  left: 0;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2) !important;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, .15) !important;
+  backdrop-filter: blur(5px) !important;
+}
+
+.row-sm {
+  margin: auto;
+  width: fit-content;
+  padding: 10px;
+}
+
+.homeImage {
+  margin: 5px;
+}
+
+.backGroundImage {
+  background: linear-gradient(#335C81, #FFFFFF);
+  /* background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%); */
+
+  /* background: linear-gradient(335deg, rgba(255, 140, 107, 1) 0%, rgba(255, 228, 168, 1) 100%); */
+  /* background: url(./images/wallpaperflare.com_wallpaper\ \(2\).jpg); */
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: -1;
+}
+
+.cardContainer {
+  width: fit-content;
+  height: fit-content;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, .15);
+  backdrop-filter: blur(5px);
+  margin: 10px;
+
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+  transform: translate3d(0, 0, 0);
+  transform: translateZ(0);
+  will-change: opacity, transform;
+}
+
+.navbar-toggler {
+  display: block !important;
+}

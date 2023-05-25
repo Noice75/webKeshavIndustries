@@ -24,6 +24,6 @@ versionData["version"] = nextVersion
 with open("./version.json", "w") as jsonfile:
     json.dump(versionData, jsonfile, indent=4)
 
-# os.system('git add .')
-os.system(f'git commit -m "update"')
+os.system('git add .')
+os.system(f'git commit -m "{commitMSG}"')
 os.system('git push')

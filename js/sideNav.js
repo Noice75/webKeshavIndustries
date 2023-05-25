@@ -28,7 +28,7 @@ if (window.location['href'].includes("main")) {
     <a href="./payment/paymentrecord.html">Payment Records</a>
     <a href="./profile.html">Profile</a>
     <a href="./READMEW.md">About</a>
-    <a href="./version.html">Version</a>`
+    <a href="./version.json">Version</a>`
     sidenav.innerHTML += html
 }
 else if (window.location['href'].includes("record")) {

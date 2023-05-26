@@ -187,7 +187,7 @@ if (document.readyState === "complete" || document.readyState === "interactive")
     document.getElementById('filter-date').addEventListener('change', applyDateFilter);
     document.getElementById('searchDateRange').addEventListener('click', applyDateRangeFilter);
     document.getElementById('yearDateSelector').addEventListener('change', applyYearFilter);
-    document.getElementById('dropdown-filter-clear').addEventListener('click', clearFilter);
+    // document.getElementById('dropdown-filter-clear').addEventListener('click', clearFilter);
     document.getElementById('sidenavdropdown-filter-clear').addEventListener('click', clearFilter);
     document.getElementById('previous').addEventListener('click', previousPage);
     document.getElementById('next').addEventListener('click', nextPage);

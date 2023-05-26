@@ -2,11 +2,26 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 minimum-scale=1, user-scalable=yes"">
   <title>Document</title>
   <link rel="stylesheet" href="../css/styles.css">
 </head>
   <body class="bg-gray-50 dark:bg-gray-700 overflow-hidden">
+    
+    <!-- Off-canvas menu -->
+    <aside id="menu" class="w-56 -mr-56 h-screen flex bg-black duration-700 absolute z-10 right-0 bg-opacity-70"> <!-- Add absolute and z-10 here -->
+      <div class="w-full flex flex-col text-white px-5 py-4 space-y-4 fixed z-50">
+        <a href="javascript:void(0)" onclick="closeMenu()" class="text-center text-4xl hover:text-red-400">×</a>
+        <a class="text-2xl font-bold hover:text-amber-500 py-3" href="../purchase/purchase.html">Purchases</a>
+        <a class="text-2xl font-bold hover:text-amber-500 py-3" href="../purchase/purchaserecord.html">Purchase Records</a>
+        <a class="text-2xl font-bold hover:text-amber-500 py-3" href="../sales/sales.html">Sales</a>
+        <a class="text-2xl font-bold hover:text-amber-500 py-3" href="../sales/salesrecord.html">Sales Records</a>
+        <a class="text-2xl font-bold hover:text-amber-500 py-3" href="../payment/payment.html">Payment</a>
+        <a class="text-2xl font-bold hover:text-amber-500 py-3" href="../payment/paymentrecord.html">Payment Records</a>
+        <a class="text-2xl font-bold hover:text-amber-500 py-3" href="../profile.html">Profile</a>
+      </div>
+    </aside>
+
     <nav class="bg-white outline outline-1 dark:bg-gray-900">
       <div class="flex flex-wrap items-center justify-between mx-auto p-2">
         <a href="../main.html" class="flex items-center">
@@ -51,22 +66,10 @@
         </div>
       </div>
     </nav>
-    <!-- Off-canvas menu -->
-    <aside id="menu" class="w-56 -mr-56 h-screen flex bg-gray-800 duration-700 absolute z-10 right-0"> <!-- Add absolute and z-10 here -->
-      <div class="w-full flex flex-col text-white px-5 py-4 space-y-4">
-        <a href="javascript:void(0)" onclick="closeMenu()" class="text-right text-4xl hover:text-red-400">×</a>
-        <a class="hover:text-amber-500" href="../purchase/purchase.html">Purchases</a>
-        <a class="hover:text-amber-500" href="../purchase/purchaserecord.html">Purchase Records</a>
-        <a class="hover:text-amber-500" href="../sales/sales.html">Sales</a>
-        <a class="hover:text-amber-500" href="../sales/salesrecord.html">Sales Records</a>
-        <a class="hover:text-amber-500" href="../payment/payment.html">Payment</a>
-        <a class="hover:text-amber-500" href="../payment/paymentrecord.html">Payment Records</a>
-        <a class="hover:text-amber-500" href="../profile.html">Profile</a>
-      </div>
-    </aside>
-    <!-- JavaScript code -->
+
     <script>
       var menu = document.getElementById("menu");
+      menu.style.width = "0";
       var isOpen = false;
 
       // toggle the menu
@@ -84,6 +87,7 @@
 
       // show the menu
       function openMenu() {
+        menu.style.width = "250px";
         menu.classList.remove('-mr-56');
         menu.classList.add('mr-0');
         isOpen = true;
@@ -91,6 +95,7 @@
 
       // hide the menu
       function closeMenu() {
+        menu.style.width = "0";
         menu.classList.remove('mr-0');
         menu.classList.add('-mr-56');
         isOpen = false;
@@ -104,5 +109,6 @@
         }
       }
     </script>
+  
   </body>
 </html>

@@ -1,42 +1,101 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>Off-canvas side menu</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar.open {
+      transform: translateX(0);
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .overlay.open {
+      display: block;
+    }
+  </style>
 </head>
-<body class="bg-green-100 flex relative"> <!-- Add relative here -->
-  <!-- Off-canvas menu -->
-  <aside id="menu" class="w-56 -mr-56 h-screen flex bg-gray-800 duration-700 absolute z-10 right-0"> <!-- Add absolute and z-10 here -->
-    <div class="w-full flex flex-col text-white px-5 py-4 space-y-4">
-      <a href="javascript:void(0)" onclick="closeMenu()" class="text-right text-4xl hover:text-red-400">×</a>
-      <a href="#" class="hover:text-amber-500">Home</a>
-      <a href="#" class="hover:text-amber-500">About</a>
-      <a href="#" class="hover:text-amber-500">Contact</a>
-      <a href="#" class="hover:text-amber-500">Kinda Code</a>
+
+<body>
+  <div class="flex h-screen">
+    <!-- Side Navigation -->
+    <aside class="sidebar bg-gray-800 text-white w-64">
+      <div class="flex items-center justify-between px-4 py-3">
+        <h1 class="text-2xl font-bold">Sidebar</h1>
+        <button id="toggleButton" class="text-white focus:outline-none">
+          <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+            <path class="hidden" id="closeIcon" d="M18 6L6 18M6 6l12 12"></path>
+            <path class="block" id="openIcon" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      <nav class="mt-4">
+        <a href="#" class="block py-2 px-4 text-white hover:bg-gray-700">Home</a>
+        <a href="#" class="block py-2 px-4 text-white hover:bg-gray-700">About</a>
+        <a href="#" class="block py-2 px-4 text-white hover:bg-gray-700">Services</a>
+        <a href="#" class="block py-2 px-4 text-white hover:bg-gray-700">Contact</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1">
+      <header class="bg-gray-200 px-6 py-3">
+        <button id="openButton" class="text-gray-800 focus:outline-none">
+          <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </header>
+      <div class="px-6 py-4">
+        <h1 class="text-2xl font-bold">Main Content</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo eaque inventore vero? Optio incidunt minus
+          suscipit molestiae fugit magnam numquam!</p>
+      </div>
     </div>
-  </aside>
-  <!-- Main content -->
-  <main id="main" class="p-5">
-    <span onclick="openMenu()" class="text-2xl font-semibold cursor-pointer hover:text-blue-500">☰ open</span>
-    <h2 class="text-3xl mt-10">Off-canvas menu example</h2>
-  </main>
-  <!-- JavaScript code -->
+  </div>
+
+  <!-- Overlay -->
+  <div id="overlay" class="overlay"></div>
+
   <script>
-    var menu = document.getElementById("menu");
-    var main = document.getElementById("main");
-    // show the menu
-    function openMenu() {
-      menu.classList.remove('-mr-56');
-      menu.classList.add('mr-0');
-    }
-    // hide the menu
-    function closeMenu() {
-      menu.classList.remove('mr-0');
-      menu.classList.add('-mr-56');
-    }
+    const sidebar = document.querySelector('.sidebar');
+    const openButton = document.querySelector('#openButton');
+    const toggleButton = document.querySelector('#toggleButton');
+    const overlay = document.querySelector('#overlay');
+    // Open sidebar
+    openButton.addEventListener('click', () => {
+      sidebar.classList.add('open');
+      overlay.classList.add('open');
+    });
+
+    // Close sidebar
+    toggleButton.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('open');
+    });
+
+    // Close sidebar when overlay is clicked
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('open');
+    });
   </script>
 </body>
 </html>
+

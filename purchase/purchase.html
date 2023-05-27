@@ -9,33 +9,40 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../css/loader.css" />
-    <link rel="stylesheet" href="../css/addrecord.css" />
-    <link rel="stylesheet" href="../css/sideNav.css" />
+    <link rel="stylesheet" href="../css/loader.css"/>
+    <link rel="stylesheet" href="../css/addrecord.css"/>
+    <link rel="stylesheet" href="../css/styles.css"/>
   </head>
   <body>
     <div class="backGroundImage"></div>
-    <div class="navBackground"></div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-      <a href="../main.html"><img class="homeImage" src="../images/home.png" width="20" height="20" /></a>
-      <a class="navbar-brand" href="../main.html">Keshav Industries</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-        onclick="openNav()"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </nav>
+    
+    <!-- Off-canvas menu -->
+    <aside id="menu" class="w-56 -mr-56 h-screen flex bg-black duration-700 absolute z-10 right-0 bg-opacity-70"> <!-- Add absolute and z-10 here -->
+      <div class="w-full flex flex-col text-white px-5 py-4 space-y-4 fixed z-50">
+        <a href="javascript:void(0)" onclick="closeMenu()" class="text-center text-4xl hover:text-red-400">×</a>
+        <a class="text-2xl font-bold hover:text-amber-500 py-3" href="../purchase/purchase.html">Purchases</a>
+        <a class="text-2xl font-bold hover:text-amber-500 py-3" href="../purchase/purchaserecord.html">Purchase Records</a>
+        <a class="text-2xl font-bold hover:text-amber-500 py-3" href="../sales/sales.html">Sales</a>
+        <a class="text-2xl font-bold hover:text-amber-500 py-3" href="../sales/salesrecord.html">Sales Records</a>
+        <a class="text-2xl font-bold hover:text-amber-500 py-3" href="../payment/payment.html">Payment</a>
+        <a class="text-2xl font-bold hover:text-amber-500 py-3" href="../payment/paymentrecord.html">Payment Records</a>
+        <a class="text-2xl font-bold hover:text-amber-500 py-3" href="../profile.html">Profile</a>
+      </div>
+    </aside>
 
-    <div id="sidenav" class="sidenav">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    </div>
+    <nav class="outline outline-1 bg-gray-900">
+      <div class="flex flex-wrap items-center justify-between mx-auto p-2">
+        <a href="../main.html" class="flex items-center">
+          <img src="../images/logo.png" class="h-8 mr-3"/>
+          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">KESHAV INDUSTRIES</span>
+        </a>
+      <div class="flex md:order-2">
+        <button onclick="toggleMenu(event)" data-collapse-toggle="navbar-search" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
+          <span class="sr-only">Open menu</span>
+          <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+        </button>
+      </div>
+    </nav>
 
     <div class="card container mt-3">
       <h2 style="text-align: center">Purchase</h2>
